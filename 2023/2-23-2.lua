@@ -108,7 +108,6 @@ for i, entry in ipairs(List) do
 	MinGreen = 0
 	MinBlue = 0
 	ColonLoc, _ = string.find(EntryString, ":")
-	FirstSpaceLoc, _ = string.find(EntryString, " ")
 	_, SemiColonCount = string.gsub(EntryString, ";", ";")
 	StringSearchStart = ColonLoc+2
 	for j=1,SemiColonCount+1,1 do

@@ -7,7 +7,7 @@ List = {
 }
 Value = 0
 HandList = { } --1 is hand, 2 is bid, 3 is card rank, 4 is value
-CardStrength = { "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A" }
+CardStrength = { "J", "2", "3", "4", "5", "6", "7", "8", "9", "T", "Q", "K", "A" }
 HandValues = {
 "5",
 "41",
@@ -35,11 +35,14 @@ function CalcHandValue(HandString)
 	HandValueString = ""
 	TempHandTable = { }
 	HandTable = { 0 }
+	JokerCount = 0
 	--print("Hand "..HandString.." value calc")
 	for i, entry in ipairs(CardStrength) do
 		_, CardCount = string.gsub(HandString, entry, entry)
 		TotalCards = TotalCards + CardCount
-		if CardCount > 0 then
+		if i == 1 and CardCount > 0 then
+			JokerCount = CardCount
+		elseif CardCount > 0 then
 			table.insert(TempHandTable,CardCount)
 		end
 		if TotalCards == 5 then
@@ -55,6 +58,7 @@ function CalcHandValue(HandString)
 			table.insert(HandTable,entry)
 		end
 	end
+	HandTable[1] = HandTable[1] + JokerCount
 	for i, entry in ipairs(HandTable) do
 		if entry == 0 then
 			table.remove(HandTable,i)

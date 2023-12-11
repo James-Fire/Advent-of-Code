@@ -1,5 +1,9 @@
 List = {
-
+"32T3K 765",
+"T55J5 684",
+"KK677 28",
+"KTJJT 220",
+"QQQJA 483",
 }
 Value = 0
 HandList = { } --1 is hand, 2 is bid, 3 is rank, 4 is value
